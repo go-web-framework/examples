@@ -1,0 +1,47 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+    <title>GoBlog</title>
+<script src="https://unpkg.com/react@15.3.0/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.0/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+{{ template "header" }}
+<div id="posts">
+
+<!-- <script type="text/javascript" src="count.js"></script> -->
+
+<!-- list of stuff -->
+
+User: {{.Username}}
+</br>
+{{range $key, $value := .PostList}}
+		{{printf "%s" $value.Author}}
+		</br>
+		{{printf "%s" $value.Text}}
+		</br>
+		<a href="/page/{{$value.Model.ID}}">Post Link</a>
+{{end}}
+
+New Post
+<form action="/page/new" method="POST">
+<div>Author: <textarea name="author"></textarea></div>
+<div>Post: <textarea name="text"></textarea></div>
+<div><input type="submit" value="save"></div>
+</form> 
+</div>
+
+
+Change User
+<form action="/changeUser" method="POST">
+<div>Name: <textarea name="Name"></textarea></div>
+<div><input type="submit" value="Change"></div>
+</form> 
+</br>
+<a href = "/newuser">New User</a>
+
+</body>
+</html>
+
