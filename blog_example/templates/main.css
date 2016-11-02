@@ -1,0 +1,48 @@
+body{
+	background-color: #F5F5F5;
+}
+.headPage{
+	padding:5px;
+	background-color: #FFFFFF;
+	border-radius: 5px;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	border: 1px solid #D3DBDB;
+}
+.post{
+	border-radius: 5px;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	border: 1px solid #D3DBDB;
+	background-color: #FFFFFF;
+	padding: 10px;
+}
+
+.box{
+	margin: 0px auto;
+
+}
+
+.profileBox{
+	float:left;
+	margin:10px;
+	width: 25%;
+	padding: 5px;
+	border-radius: 5px;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	border: 1px solid #D3DBDB;
+	background-color: #FFFFFF;
+}
+
+.postBox{
+	float:left;
+	margin:10px;
+	width: 40%;
+}
+
+.userBox{
+	float:left;
+	margin:10px;
+	width: 25%;
+}

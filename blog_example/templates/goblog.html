@@ -3,36 +3,21 @@
 <head>
 <meta charset="utf-8">
     <title>GoBlog</title>
+		<link rel="stylesheet" href="main.css" />
 <script src="https://unpkg.com/react@15.3.0/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15.3.0/dist/react-dom.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+		
 </head>
 <body>
-{{ template "header" }}
-<div id="posts">
-
-<!-- <script type="text/javascript" src="count.js"></script> -->
-
-<!-- list of stuff -->
-
-User: {{.Username}}
-</br>
-{{range $key, $value := .PostList}}
-		{{printf "%s" $value.Author}}
-		</br>
-		{{printf "%s" $value.Text}}
-		</br>
-		<a href="/page/{{$value.Model.ID}}">Post Link</a>
-{{end}}
-
-New Post
-<form action="/page/new" method="POST">
-<div>Author: <textarea name="author"></textarea></div>
-<div>Post: <textarea name="text"></textarea></div>
-<div><input type="submit" value="save"></div>
-</form> 
+<div class="headPage">
+<h1> GoTwit </h1></br>
 </div>
+<div class="box">
 
+<div class="profileBox">
+{{ template "header" }}
+User: {{.Username}} </br>
 
 Change User
 <form action="/changeUser" method="POST">
@@ -41,7 +26,31 @@ Change User
 </form> 
 </br>
 <a href = "/newuser">New User</a>
+</div>
 
+
+<div class="postBox">
+New Post
+<form action="/page/new" method="POST">
+<div><textarea name="text"></textarea></div>
+<div><input type="submit" value="save"></div>
+</form> 
+{{range $key, $value := .PostList}}
+		<div class="post">
+		<b>{{printf "%s" $value.Author}}</b>
+		</br>
+		{{printf "%s" $value.Text}}
+		</br>
+		<a href="/page/{{$value.Model.ID}}">Post Link</a>
+		</br>
+		</div>
+{{end}}
+</div>
+
+
+
+
+</div>
 </body>
 </html>
 

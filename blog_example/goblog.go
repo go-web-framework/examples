@@ -64,12 +64,14 @@ func main(){
 	userHandler := userHandler{}
 	newUserHandler := newUserHandler{}
 	changeUserHandler := changeUserHandler{}
+	cssHandler := cssHandler{}
 	testMux.GET("/home", nil, homeHandler)
 	testMux.GET("/page/{id}", nil, pageHandler)
 	testMux.POST("/page/new", nil, newHandler)
 	testMux.GET("/newuser", nil, userHandler)
 	testMux.POST("/makeNewUser", nil, newUserHandler)
 	testMux.POST("/changeUser", nil, changeUserHandler)
+	testMux.GET("/main.css", nil, cssHandler)
 	fmt.Println("Listening on :8080")
 	http.ListenAndServe(":8080", testMux)
 	
@@ -105,9 +107,9 @@ func (t newUserHandler) ServeHTTP(w http.ResponseWriter, r *http.Request){
 	http.Redirect(w, r, "/home", http.StatusFound)
 }
 
-type jsHandler struct{}
-func (t jsHandler) ServeHTTP(w http.ResponseWriter, r *http.Request){
-	http.ServeFile(w, r, "posts.js");
+type cssHandler struct{}
+func (t cssHandler) ServeHTTP(w http.ResponseWriter, r *http.Request){
+	http.ServeFile(w, r, "templates/main.css");
 }
 type homeHandler struct{
 }
@@ -166,10 +168,7 @@ type newHandler struct{
 }
 
 func (t newHandler) ServeHTTP(w http.ResponseWriter, r *http.Request){
-	author := r.FormValue("author")
-	if (author == ""){
-		author = "anon"
-	}
+	author := userName
 	text := r.FormValue("text")
 	
 	//store post
