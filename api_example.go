@@ -5,7 +5,7 @@ package main
 
 import (
 	"fmt"
-	"gflux/api"
+	"github.com/go-web-framework/api"
 	"net/http"
 )
 
