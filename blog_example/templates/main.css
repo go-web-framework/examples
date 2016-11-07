@@ -1,13 +1,17 @@
 body{
-	background-color: #F5F5F5;
+	background-color: #eae3dc;
 }
 .headPage{
-	padding:5px;
+	padding: 15px;
 	background-color: #FFFFFF;
 	border-radius: 5px;
 	-moz-border-radius: 5px; 
 	-webkit-border-radius: 5px;
 	border: 1px solid #D3DBDB;
+	font-family: "Verdana";
+}
+.headPage1{
+	width: 50px;
 }
 .post{
 	border-radius: 5px;
@@ -23,22 +27,65 @@ body{
 
 }
 
-.profileBox{
+.userBox{
 	float:left;
 	margin:10px;
 	width: 25%;
-	padding: 5px;
+	padding: 10px;
+	
+}
+
+#profileBox{
 	border-radius: 5px;
 	-moz-border-radius: 5px; 
 	-webkit-border-radius: 5px;
 	border: 1px solid #D3DBDB;
 	background-color: #FFFFFF;
+	width: 100%;
+	padding: 10px;
+}
+
+#profileImage{
+	font-size: 300%;
+	line-height:1px;
+	border-radius: 5px;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	border: 1px solid #D3DBDB;
+	width: 50px;
+	height: 50px;
+}
+
+#userPad{
+	width: 100%;
+	height: 100px;
+}
+
+#otherUserBox{
+	border-radius: 5px;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	border: 1px solid #D3DBDB;
+	background-color: #FFFFFF;
+	width: 100%;
+	padding: 10px;
 }
 
 .postBox{
 	float:left;
 	margin:10px;
 	width: 40%;
+}
+
+.smallProfileImage{
+	font-size: 150%;
+	line-height:1px;
+	border-radius: 5px;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #D3DBDB;
 }
 
 .userBox{

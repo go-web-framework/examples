@@ -39,7 +39,7 @@ func main(){
 	defer db.Close()
 	
 	// Migrate the schema
-	db.CreateTable(&User{}, &Post{})
+	//db.CreateTable(&User{}, &Post{})
  	db.AutoMigrate(&Post{})
  	db.AutoMigrate(&User{})
  	db.Delete(Post{})
