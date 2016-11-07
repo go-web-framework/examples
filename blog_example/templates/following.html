@@ -1,0 +1,42 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+    <title>GoBlog</title>
+		<link rel="stylesheet" href="/main.css" />
+<script src="https://unpkg.com/react@15.3.0/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.0/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+		
+</head>
+<body>
+<div class="headPage">
+<h1> GoTwit </h1></br>
+</div>
+<div class="box">
+
+<div class="profileBox">
+</br>
+
+
+</br>
+<a href = "/newuser">New User</a>
+</div>
+
+
+<div class="postBox">
+{{range $key, $value := .FollowList}}
+		<div class="post">
+		<b>{{printf "%s" $value.Name}}</b>
+		</br>
+		</div>
+{{end}}
+</div>
+
+
+
+
+</div>
+</body>
+</html>
+

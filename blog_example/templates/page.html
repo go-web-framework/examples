@@ -1,12 +1,19 @@
 <html>
 <head>
+<meta charset="utf-8">
+<title>Post</title>
+<link rel="stylesheet" href="/main.css" />
 </head>
 <body>
 
 {{ template "header" }}
+<div class="post">
 <div>Author: {{.Author}}</div>
 <div>Post: {{.Text}}</div>
+</div>
+<div class="post">
 <a href = "/home"> Back Home </a>
+</div>
 
 </body>
 </html> 
