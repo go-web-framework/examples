@@ -15,7 +15,7 @@ import (
 	//"encoding/json"
 	"github.com/go-web-framework/templates"
 	//"path/filepath"
-	"sort"
+	//"sort"
 )
 
 var db *gorm.DB
@@ -39,7 +39,7 @@ func main(){
 	defer db.Close()
 	
 	// Migrate the schema
-	//db.CreateTable(&User{})
+	db.CreateTable(&User{}, &Post{})
  	db.AutoMigrate(&Post{})
  	db.AutoMigrate(&User{})
  	db.Delete(Post{})
@@ -56,38 +56,24 @@ func main(){
 	db.Create(&post)
 	fmt.Printf("%d\n", post.Model.ID)
 
-	var userb = User{Name: "default2"}
-	db.Create(&userb)
-	var userc = User{Name: "default3"}
-	db.Create(&userc)
-	var postb = Post{UserID: userb.ID, Author: userb.Name, Text: "userb"}
-	var postc = Post{UserID: userc.ID, Author: userc.Name, Text: "userc"}
-	db.Create(&postb)
-	db.Create(&postc)
-
-	db.Model(&userb).Association("Follows").Append([]User{user}) 
-	db.Model(&userc).Association("Follows").Append([]User{user})
-	db.Model(&userc).Association("Follows").Append([]User{userb})
  
 	s.Parse("templates")
 
 	testMux := mux.New()
 	homeHandler := homeHandler{}
-	userPageHandler := userPageHandler{}
+	//userPageHandler := userPageHandler{}
 	pageHandler := pageHandler{}
 	newHandler := newHandler{}
 	userHandler := userHandler{}
-	followListHandler := followListHandler{}
 	newUserHandler := newUserHandler{}
 	changeUserHandler := changeUserHandler{}
 	cssHandler := cssHandler{}
 	notFoundHandler := notFoundHandler{}
 	testMux.GET("/home", nil, homeHandler)
-	testMux.GET("/user/{name}", nil, userPageHandler)
+	//testMux.GET("/user/{name}", nil, userPageHandler)
 	testMux.GET("/page/{id}", nil, pageHandler)
 	testMux.POST("/page/new", nil, newHandler)
 	testMux.GET("/newuser", nil, userHandler)
-	testMux.GET("/user/{name}/following", nil, followListHandler)
 	testMux.POST("/makeNewUser", nil, newUserHandler)
 	testMux.POST("/changeUser", nil, changeUserHandler)
 	testMux.GET("/main.css", nil, cssHandler)
@@ -97,57 +83,6 @@ func main(){
 	
 }
 
-type followListHandler struct{
-}
-
-func (t followListHandler) ServeHTTP(w http.ResponseWriter, r *http.Request){
-	params := mux.GetParams(r)
-	userPageName := params["name"]
-	var follows []User
-	var user User
-	db.Where("Name = ?", userPageName).First(&user)
-
-	db.Model(&user).Related(&follows, "Follows")
-	//err := templates.ExecuteTemplate(w, "goblog.html", &goBlog{Username: userName, PostList: postList})
-	m := make(map[string]interface{})
-	m["FollowList"] = follows
-	err := s.Execute("following.html", w, m)
-    if err != nil {
-        http.Error(w, err.Error(), http.StatusInternalServerError)
-    }
-	
-	return
-}
-
-type userPageHandler struct{
-}
-
-func (t userPageHandler) ServeHTTP(w http.ResponseWriter, r *http.Request){
-	params := mux.GetParams(r)
-	userPageName := params["name"]
-	var postList SPosts
-	var follows []User
-	var user User
-	db.Where("Name = ?", userPageName).First(&user)
-
-	db.Model(&user).Related(&follows, "Follows")
-	for _, thisFollow := range follows{
-		var thisPostList []Post
-		db.Model(&thisFollow).Related(&thisPostList)
-		postList = append(postList, thisPostList...)
-	}
-	sort.Sort(postList)
-	//err := templates.ExecuteTemplate(w, "goblog.html", &goBlog{Username: userName, PostList: postList})
-	m := make(map[string]interface{})
-	m["Username"] = userName
-	m["PostList"] = postList
-	err := s.Execute("goblog.html", w, m)
-    if err != nil {
-        http.Error(w, err.Error(), http.StatusInternalServerError)
-    }
-	
-	return
-}
 
 type notFoundHandler struct{}
 func (t notFoundHandler) ServeHTTP(w http.ResponseWriter, r *http.Request){
@@ -276,28 +211,12 @@ type Post struct{
 	Text 			string	`gorm:"type:varchar(200)" json:"text"`
 }
 
-type SPosts []Post
 
-func (slice SPosts) Len() int{
-	return len(slice)
-}
-
-//want latest first
-func (slice SPosts) Less(i, j int)bool{
-	time1 := slice[i].Model.CreatedAt
-	time2 := slice[j].Model.CreatedAt
-	
-	return time1.After(time2) 
-}
-
-func (slice SPosts) Swap(i, j int){
-	slice[i], slice[j] = slice[j], slice[i]
-}
 
 type User struct{
 	gorm.Model
-	Follows []User 	 	`gorm:"many2many:user_follows;foreignkey:user_id;associationforeignkey:follow_id;"`
 	Posts []Post
+	//Reposts []Post 	 	`gorm:"many2many:user_reposts;foreignkey:user_id;associationforeignkey:repost_id;"`
 	Name		string `gorm:"type:varchar(20)"`
 }
 
