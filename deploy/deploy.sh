@@ -3,7 +3,8 @@ function usage() {
 }
 
 function deploy() {
-    # build for arch.
+    # build for target server's os and arch.
+    # TODO: find using uname so we neither have to hardcode nor ask the user.
     GOOS=freebsd GOARCH=amd64 go build -v .
     # copy files
     ssh $host mkdir -p app
