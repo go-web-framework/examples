@@ -13,7 +13,7 @@ function deploy() {
 }
 
 function cleanup() {
-    rm $bin
+    go clean
 }
 
 if [ $# -ne 3 ]; then
