@@ -4,7 +4,7 @@ Deploy script.
 
 ## Usage
 
-Simply run `./deploy.sh` without argument to see usage.
+Simply run `./deploy.sh` without arguments to see usage.
 
 ```
 ./deploy.sh [host] [db] [port]
@@ -12,7 +12,7 @@ Simply run `./deploy.sh` without argument to see usage.
 
 ## Example
 
-To compile a go main package, switch to the directory of the package and do:
+To deploy a main go package, switch to the directory of the package and do:
 
 ```
 ./deploy.sh freebsd-do test.db 80
