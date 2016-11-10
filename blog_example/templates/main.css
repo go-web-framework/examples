@@ -1,25 +1,36 @@
 body{
-	background-color: #eae3dc;
+	background-color: #737e8e;
 }
-.headPage{
-	padding: 15px;
-	background-color: #FFFFFF;
+
+#all0{
+	width: 5%;
+	float: left;
+	min-height: 1px;
+	margin-bottom: 50px;
+}
+
+#all{
+	-webkit-box-shadow: 0 0 5px 2px #151616;
+  -moz-box-shadow: 0 0 5px 2px #151616;
+  box-shadow: 0 0 5px 2px #151616;
 	border-radius: 5px;
 	-moz-border-radius: 5px; 
 	-webkit-border-radius: 5px;
-	border: 1px solid #D3DBDB;
-	font-family: "Verdana";
+	width: 90%;
+	float: left;
+	min-height: 1px;
+	margin-bottom: 50px;
 }
-.headPage1{
-	width: 50px;
+
+#all2{
+	width:5%;
+	float: left;
+	min-height: 1px;
+	
 }
-.post{
-	border-radius: 5px;
-	-moz-border-radius: 5px; 
-	-webkit-border-radius: 5px;
-	border: 1px solid #D3DBDB;
-	background-color: #FFFFFF;
-	padding: 10px;
+
+.headLinks{
+
 }
 
 .box{
@@ -27,12 +38,32 @@ body{
 
 }
 
+.headPage{
+	padding: 15px;
+	background-color: #6689c1;
+	color: #FFFFFF;
+	border-radius: 5px;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	/*border: 1px solid #D3DBDB;*/
+	font-family: "Verdana";
+}
+.headPage1{
+	width: 30%;
+}
+.headPage2{
+	width: 30%;
+}
+
 .userBox{
 	float:left;
-	margin:10px;
 	width: 25%;
-	padding: 10px;
-	
+	background-color: #eae3dc;
+	font-size: 75%;
+	border-radius: 0px 0px 0px 5px;
+	-moz-border-radius: 0px 0px 0px 5px; 
+	-webkit-border-radius: 0px 0px 0px 5px;
+	height: 100%;
 }
 
 #profileBox{
@@ -41,55 +72,50 @@ body{
 	-webkit-border-radius: 5px;
 	border: 1px solid #D3DBDB;
 	background-color: #FFFFFF;
-	width: 100%;
-	padding: 10px;
+	padding: 5px;
+	
+	margin:2px;
 }
 
-#profileImage{
-	font-size: 300%;
-	line-height:1px;
+#otherUserBox{
+	padding: 5px;
+}
+
+.postBox{
+	float:left;
+	/*margin:10px;*/
+	width: 75%;
+	background-color: #f2f7ff;
+	font-size: 75%;
+	height: 100%;
+}
+
+.post{
 	border-radius: 5px;
 	-moz-border-radius: 5px; 
 	-webkit-border-radius: 5px;
 	border: 1px solid #D3DBDB;
-	width: 50px;
-	height: 50px;
+	background-color: #FFFFFF;
+	padding: 10px;
+	margin: 10px;
 }
+
+#newpost{
+	margin: 10px;
+}
+/*
+
+
+
+
+
 
 #userPad{
 	width: 100%;
 	height: 100px;
 }
 
-#otherUserBox{
-	border-radius: 5px;
-	-moz-border-radius: 5px; 
-	-webkit-border-radius: 5px;
-	border: 1px solid #D3DBDB;
-	background-color: #FFFFFF;
-	width: 100%;
-	padding: 10px;
-}
 
-.postBox{
-	float:left;
-	margin:10px;
-	width: 40%;
-}
 
-.smallProfileImage{
-	font-size: 150%;
-	line-height:1px;
-	border-radius: 5px;
-	-moz-border-radius: 5px; 
-	-webkit-border-radius: 5px;
-	width: 20px;
-	height: 20px;
-	border: 1px solid #D3DBDB;
-}
+*/
 
-.userBox{
-	float:left;
-	margin:10px;
-	width: 25%;
-}

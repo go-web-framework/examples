@@ -52,7 +52,7 @@ func main(){
 	var user2 User
 	db.Where("Name= ?", userName).First(&user2)
 	userID = user2.ID
-	var post = Post{UserID: userID ,Author: userName, Text: "hello"}
+	var post = Post{UserID: userID ,Author: userName, Text: "hello, this is a post; and nothing more than a post.\nIf this is a post, then what"}
 	db.Create(&post)
 	fmt.Printf("%d\n", post.Model.ID)
 
@@ -92,6 +92,8 @@ type changeUserHandler struct{}
 func (t changeUserHandler) ServeHTTP(w http.ResponseWriter, r *http.Request){
 	name := r.FormValue("Name")
 	var user User
+	user.Name = userName
+	user.ID = userID
 	db.Where("Name= ?", name).First(&user)
 	userName = user.Name
 	userID = user.ID

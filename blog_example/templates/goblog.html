@@ -1,75 +1,68 @@
-
 <html>
 <head>
 <meta charset="utf-8">
     <title>GoBlog</title>
 		<link rel="stylesheet" href="main.css" />
-<script src="https://unpkg.com/react@15.3.0/dist/react.js"></script>
-    <script src="https://unpkg.com/react-dom@15.3.0/dist/react-dom.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
 		
 </head>
 <body>
-<div class="headPage">
-<div class="headPage1">
-</div>
-<div class="headPage2">
-<h1> GoBlog </h1>
-</div>
-
-</div>
-
-<div class="box">
-
-<div class="userBox">
-<div id="profileBox">
-<div id="profileImage"><b> T </b></div></br>
-<b> {{.Username}} </b></br></br>
-This is a profile description,</br> what am I doing here</br>
-</div>
-
-<div id="userPad"></div>
-
-<div id="otherUserBox">
-<b> Change User </b>
-<form action="/changeUser" method="POST">
-<div><textarea name="Name"></textarea></div>
-<div><input type="submit" value="Change User"></div>
-</form> 
-</br>
-<hr>
-<a href = "/newuser">New User</a>
-</div>
-
-</div>
-
-
-<div class="postBox">
-New Post
-<form action="/page/new" method="POST">
-<div><textarea name="text"></textarea></div>
-<div><input type="submit" value="save"></div>
-</form> 
-{{range $key, $value := .PostList}}
-		<div class="post">
-		<div class="smallProfileImage">
-		<b>T</b>
+<div id="all0"></div>
+<div id="all">
+	<div class="headPage">
+		<div class="headLinks">
+		HOME | HOME | HOME | HOME | HOME | DONATE
 		</div>
-		</br>	
-		<b>{{printf "%s" $value.Author}}</b>
-		</br>
-		{{printf "%s" $value.Text}}
-		</br>
-		<a href="/page/{{$value.Model.ID}}">Post Link</a>
-		</br>
+		<div class="headPage1">
 		</div>
-{{end}}
+		<div class="headPage2">
+		<h1> GoBlog </h1>
+		</div>
+	</div>
+
+	<div class="box">
+
+		<div class="userBox">
+			<div id="profileBox">
+			<b> {{.Username}} </b></br></br>
+			This is a profile description,</br> what am I doing here</br>
+			</div>
+
+
+			<div id="otherUserBox">
+			<b> Change User </b>
+			<form action="/changeUser" method="POST">
+			<div><textarea name="Name"></textarea></div>
+			<div><input type="submit" value="Change User"></div>
+			</form> 
+			</br>
+			<hr>
+			<a href = "/newuser">New User</a>
+			</div>
+		</div>
+
+
+		<div class="postBox">
+
+			{{range $key, $value := .PostList}}
+			{{template "header" $value}}
+			
+			{{end}}
+
+			<div id="newpost">
+			New Post
+			<form action="/page/new" method="POST">
+			<div><textarea name="text"></textarea></div>
+			<div><input type="submit" value="save"></div>
+			</form>
+			</div>
+		</div>
+
+
+
+
+	</div>
+
 </div>
-
-
-
-
-</div>
+<div id="all2"></div>
 </body>
 </html>
-
