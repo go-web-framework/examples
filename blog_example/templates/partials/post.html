@@ -1,0 +1,12 @@
+{{ define "post" }}
+<div class="post">
+		<div style="font-size:75%"><b>{{printf "%s" .Author}}</b></div>
+		{{printf "%s" .Text}}
+		</br>
+		<a href="/page/{{.Model.ID}}">Post Link</a>
+		</br>
+		</div>
+{{ end }}
+
+
+
