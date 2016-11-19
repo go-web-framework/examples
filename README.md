@@ -66,3 +66,20 @@ Where {post} is in json format, for example:
 ```sh
 curl -H "Content-Type: application/json" -X "POST" -d '{"Body":"This is a new post"}' localhost:8080/posts
 ```
+
+
+# blog_example
+
+```sh
+go run goblog.go
+```
+runs the first template website
+
+![alt tag](http://i.imgur.com/n5zhgXr.png)
+
+```sh
+go run goblog2.go
+```
+runs the second template
+
+![alt tag](http://i.imgur.com/kUb4Q8M.png)
